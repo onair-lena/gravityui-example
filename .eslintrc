@@ -1,0 +1,75 @@
+{
+  "parser": "@babel/eslint-parser",
+  "extends": ["airbnb", "prettier", "plugin:react/recommended"],
+  "plugins": ["prettier"],
+  "settings": {
+    "import/resolver": "webpack"
+  },
+  "rules": {
+    "prettier/prettier": ["error"],
+    "comma-dangle": 0,
+    "no-console": 0,
+    "radix": 0,
+
+    "react/jsx-filename-extension": 0,
+    "react/function-component-definition": 0,
+    "react/jsx-no-bind": 0,
+
+    "func-names": 0,
+    "import/extensions": 0,
+    "import/prefer-default-export": 0,
+    "camelcase": 0,
+    "vars-on-top": 0,
+    "import/no-mutable-exports": 0,
+    "no-unused-expressions": 0,
+    "no-restricted-syntax": 0,
+    "no-var": 0,
+    "no-nested-ternary": 0,
+    "no-underscore-dangle": 0,
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "lines-between-class-members": 0,
+
+    "react/prop-types": 0,
+    "react/jsx-wrap-multilines": 0,
+    "react/jsx-props-no-spreading": 0,
+    "react/no-array-index-key": 0,
+    "react/require-default-props": 0,
+
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/no-static-element-interactions": 0,
+    "jsx-a11y/label-has-for": 0,
+    "jsx-a11y/control-has-associated-label": 0,
+    "jsx-a11y/label-has-associated-control": 0
+  },
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true,
+    "amd": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module",
+    "ecmaFeatures": { "jsx": true }
+  },
+  "overrides": [
+    {
+      "files": ["*.{ts,tsx}"],
+      "parser": "@typescript-eslint/parser",
+      "plugins": ["@typescript-eslint"],
+      "extends": ["plugin:@typescript-eslint/recommended"],
+      "rules": {
+        "no-shadow": 0,
+        "@typescript-eslint/no-shadow": ["error"]
+      }
+    },
+    {
+      "files": ["*.test.js"],
+      "plugins": ["jest"],
+      "env": {
+        "jest": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,211 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=375px, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <title>Test</title>
+    <link rel="shortcut icon" href="favicon/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-touch-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon-180x180.png" />
+    <link rel="icon" type="image/png" href="favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="favicon/android-chrome-192x192.png" sizes="192x192" />
+    <meta name="msapplication-square70x70logo" content="favicon/smalltile.png" />
+    <meta name="msapplication-square150x150logo" content="favicon/mediumtile.png" />
+    <meta name="msapplication-wide310x150logo" content="favicon/widetile.png" />
+    <meta name="msapplication-square310x310logo" content="favicon/largetile.png" />
+
+    <style>
+      #bad-browser {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        margin: 0;
+        background: #fff;
+        z-index: 1000;
+        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 1);
+        /*  padding:30px;*/
+        display: none;
+        padding: 100px 0;
+        border-top: 1px solid #5f5f5f;
+      }
+      #bad-browser .bad-browser__close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 10px;
+        height: 11px;
+        cursor: pointer;
+        background: url('c/i/l-page/sprite.png') -162px -430px no-repeat;
+      }
+      #bad-browser p {
+        color: #000;
+        font-size: 13px;
+        line-height: 1.3em;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+      }
+      #bad-browser p span {
+        display: inline-block;
+        margin-left: 6px;
+        vertical-align: top;
+        color: #009bce;
+        border-bottom: 1px dotted #009bce;
+      }
+      #bad-browser p span:hover {
+        cursor: pointer;
+        border-bottom: 1px solid transparent;
+      }
+
+      #bad-browser.closed .show-more,
+      #bad-browser .hide-more {
+        display: inline-block;
+        vertical-align: top;
+      }
+      #bad-browser .show-more,
+      #bad-browser.closed .hide-more {
+        display: none;
+      }
+      #bad-browser .bad-browser__list {
+        list-style: none;
+        text-align: center;
+        padding: 10px 0 0;
+        margin: 0;
+        display: block;
+      }
+      #bad-browser li {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        vertical-align: top;
+        margin: 0 30px;
+        width: 53px;
+      }
+      #bad-browser li a {
+        display: inline-block;
+        vertical-align: top;
+        width: 53px;
+        padding-top: 59px;
+        background: url('c/i/badbrowser/browsers.png') 0 0 no-repeat;
+        color: #000;
+        font-size: 13px;
+        line-height: 1.3em;
+        text-decoration: none;
+      }
+      #bad-browser li a:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+      #bad-browser li.bad-browser_item_chrome a {
+        background-position: 0 0;
+      }
+      #bad-browser li.bad-browser_item_firefox a {
+        background-position: -53px 0;
+      }
+      #bad-browser li.bad-browser_item_opera a {
+        background-position: -106px 0;
+      }
+      #bad-browser li.bad-browser_item_safari a {
+        background-position: -159px 0;
+      }
+
+      #bad-browser li a span {
+        width: 121px;
+        left: -34px;
+        position: relative;
+        text-align: center;
+        display: inline-block;
+        vertical-align: top;
+      }
+      #bad-browser li a:hover span {
+        text-decoration: underline;
+      }
+
+      .loader {
+        position: fixed;
+        z-index: 998;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        opacity: 0.9;
+
+        border: none;
+        background: #333 no-repeat 50%;
+      }
+
+      .loader iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        opacity: 0; /* для Opera 9.27 */ /**/
+
+        border: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="loader"><iframe></iframe></div>
+    </div>
+
+    <script>
+      var VERSION = '$Revision: 12924 $'.split(' ')[1],
+        UTIME = parseInt(new Date().getTime() / 1000);
+    </script>
+
+    <% if(htmlWebpackPlugin.options.noClientLog !== 1) { %>
+    <script>
+      // Отправка ошибок на сервер
+      window.onerror = function (msg, url, lineNo, columnNo, error) {
+        var string = msg.toLowerCase();
+        var substring = 'script error';
+        if (string.indexOf(substring) > -1) {
+          return false;
+        }
+        var message = {
+          onerror: {
+            msg: msg,
+            url: url,
+            lineNo: lineNo,
+            columnNo: columnNo,
+            error: error,
+            VERSION: VERSION,
+            UTIME: UTIME,
+            href: (location || {}).href
+          }
+        };
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'req.fcgi?action_name=client_log', true);
+
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr.send('json_=' + JSON.stringify(message));
+
+        return false;
+      };
+    </script>
+    <% } %>
+  </body>
+</html>
+<!-- BUMP1401834285 -->

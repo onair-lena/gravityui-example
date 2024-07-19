@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es2015",
+    "jsx": "react",
+    "allowJs": true,
+    "declaration": false,
+    "noLib": false,
+    "lib": ["DOM", "ES2019"],
+    "moduleResolution": "node",
+    "strictNullChecks": true,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "Components/*": ["./src/components/*"],
+      "Contexts/*": ["./src/contexts/*"],
+      "Src/*": ["./src/*"],
+      "Projects/*": ["./projects/*"]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "storage",
+    "web"
+  ]
+}

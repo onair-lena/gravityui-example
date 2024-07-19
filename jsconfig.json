@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "Src/*": ["./src/*"]
+    }
+  },
+  "exclude": ["node_modules"],
+  "include": ["./declaration.d.ts"]
+}
